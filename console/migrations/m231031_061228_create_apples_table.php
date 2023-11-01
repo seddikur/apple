@@ -25,7 +25,7 @@ class m231031_061228_create_apples_table extends Migration
             'status' => $this->integer()->comment('Статус (на дереве / упало)'),
             'eat' => $this->integer()->comment('Cколько съели'),
 
-        ]);
+        ], $tableOptions);
     }
 
     /**

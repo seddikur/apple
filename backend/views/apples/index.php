@@ -60,11 +60,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'eat',
-//            [
-//                'label' => 'действие',
-//                'format' => 'raw',
-//                'value' => Html::a('Click me', ['site/index'], ['class' => 'btn btn-success btn-xs', 'data-pjax' => 0])
-//            ],
             [
                 'class' => ActionColumn::className(),
                 'template' => '{action} ',

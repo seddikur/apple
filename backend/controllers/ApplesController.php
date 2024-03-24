@@ -41,16 +41,16 @@ class ApplesController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Apples::find(),
-            /*
+
             'pagination' => [
-                'pageSize' => 50
+                'pageSize' => 5
             ],
             'sort' => [
                 'defaultOrder' => [
                     'id' => SORT_DESC,
                 ]
             ],
-            */
+
         ]);
 
         return $this->render('index', [
@@ -96,7 +96,7 @@ class ApplesController extends Controller
     public function randomColor()
     {
         $r = mt_rand(0, 255);
-        $g = mt_rand(112, 255);
+        $g = mt_rand(0, 255);
         $b = 0;
         return $r . "," . $g . "," . $b;
     }
@@ -125,9 +125,10 @@ class ApplesController extends Controller
     {
         if ($id != null) {
             $model = $this->findModel($id);
-            if ($model->eat < 100){
-              $model->eat = $model->eat + 25;
-            }else{
+            $model->eat = $model->eat + 25;
+
+            if ($model->eat == 100) {
+                $this->findModel($id)->delete();
                 \Yii::$app->session->setFlash('error', 'Яблоко съедено');
             }
 
